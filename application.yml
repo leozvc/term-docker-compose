@@ -1,0 +1,41 @@
+#db实例1
+mysql001:
+    image: "mysql:latest"
+    environment:
+        - MYSQL_ROOT_PASSWORD=123
+    volumes:
+        - /data/docker/mysql001_Data:/var/lib/mysql
+    restart: always
+
+#开发组文档系统
+devMediawiki:
+    image: 'synctree/mediawiki'
+    ports:
+        - "10080:80"
+    links:
+        - mysql001:mysql
+    volumes:
+        - /data/docker/mediawiki:/var/www/html
+    restart: always
+
+#移动端调试工具
+weinre:
+    image: "logankoester/weinre" 
+    command: --boundHost -all-
+    ports:
+        - "8080:8080"
+    restart: always
+
+#cadvisor docker服务监控
+cadvisor:
+    image: "google/cadvisor:latest"
+    ports:
+        - "11080:8080"
+    volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
+
+
