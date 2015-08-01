@@ -1,0 +1,20 @@
+#libreboard 开源的卡片式看板管理系统
+
+#libreboard mangodb
+libreboardMangodb:
+    image: "mongo:latest"
+    volumes:
+        - /data/docker/libreboard_mangodb_data:/data/db
+    restart: always
+
+#libreboard 实例
+libreboard:
+    image: "mkodockx/docker-libreboard"
+    ports:
+        - "15080:80"
+    links:
+        - libreboardMangodb:db
+    environment:
+        - MONGO_URL=mongodb://db
+        - ROOT_URL=http://192.168.0.146:15080
+    restart: always
