@@ -7,7 +7,7 @@ mysql001:
         - /data/docker/mysql001_Data:/var/lib/mysql
     restart: always
 
-#开发组文档系统
+#wiki文档系统
 devMediawiki:
     image: 'synctree/mediawiki'
     ports:
@@ -25,17 +25,3 @@ weinre:
     ports:
         - "8080:8080"
     restart: always
-
-#cadvisor docker服务监控
-cadvisor:
-    image: "google/cadvisor:latest"
-    ports:
-        - "11080:8080"
-    volumes:
-        - /:/rootfs:ro
-        - /var/run:/var/run:rw
-        - /sys:/sys:ro
-        - /var/lib/docker/:/var/lib/docker:ro
-    restart: always
-
-
