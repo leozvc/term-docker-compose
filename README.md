@@ -38,5 +38,11 @@ collect docker-compose for termWork!
 [google/cadvisor](https://github.com/google/cadvisor)
 
 
+###License
+
+term-docker-compose is licensed under the MIT license.
+
+###Welcome to report an Issue / Contributing
+
 
 
