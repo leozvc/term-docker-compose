@@ -1,15 +1,13 @@
 #ngrokd
 ngrokd:
-    image: 'secondimpression/ngrokd'
+    image: 'sequenceiq/ngrokd'
     ports:
-        - 14080:80
-        - 14043:443
-        - 14443:4443
-    hostname: "test.ngrok.geekdream.com"
-    environment:
-        - KEEN_API_KEY="2635b5c9f54d4dcb5627db258202e81bd0745828f34b348e37e04fcad9a04613b6854bfcf14bb8d3c3a3a091fa275c2a2e07bcd46a9ce32eb086a0a447492ea406fb63b7ecadd1f940c2138fc552ce140c7e638bcda5d457bdbeabbe3591e237ff751eac9124f88040347f1e19eef7ac" 
-        - KEEN_API_KEY_READ="67bc02b46e39d566c6e4cfaf3fb19d4ccea7dabe04e66f8b3cb29156e7a119e9e9b8d0f71f32385228a7bdd2fc0ba9b3ace0091f6840ab93eb90f1e489127c73d167c89f888148bcfdebf28c8a07e0599d8925dd7e9546407cbc49c00560c7f4e00199ce076a5e03ed18b24645cb884e"
-        - KEEN_PROJECT_TOKEN="AD7F331A63796707DBDC16929DE7D1DB"
-    volumes:
-        - /data/docker/ngrokd:/opt/ngrok/domains
+        - 14480:14480 
+        - 14444:14444 
+        - 14443:14443 
+    command:
+        -httpAddr=":14480"
+        -httpsAddr=":14444"
+        -tunnelAddr=":14443"
+        -domain="ngrok.geekdream.com"
     restart: always
