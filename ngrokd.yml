@@ -1,0 +1,13 @@
+#ngrokd
+ngrokd:
+    image: 'sequenceiq/ngrokd'
+    ports:
+        - 14480:14480 
+        - 14444:14444 
+        - 14443:14443 
+    command:
+        -httpAddr=":14480"
+        -httpsAddr=":14444"
+        -tunnelAddr=":14443"
+        -domain="ngrok.geekdream.com"
+    restart: always

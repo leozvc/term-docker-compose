@@ -1,0 +1,45 @@
+postgresql:
+  image: sameersbn/postgresql:9.4-3
+  environment:
+    - DB_USER=gitlab
+    - DB_PASS=password
+    - DB_NAME=gitlabhq_production
+  volumes:
+    - /data/docker/data/gitlab/postgresql:/var/lib/postgresql
+gitlab:
+  image: sameersbn/gitlab:8.0.2
+  links:
+    - redis:redisio
+    - postgresql:postgresql
+  ports:
+    - "13080:80"
+    - "13022:22"
+  environment:
+    - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
+    - TZ=Asia/Chongqing
+    - SMTP_ENABLED=true
+    - SMTP_DOMAIN=xxx@qq.com
+    - SMTP_HOST=smtp.qq.com
+    - SMTP_PORT=465
+    - SMTP_USER=xxx@qq.com
+    - SMTP_PASS=12222222
+    - SMTP_STARTTLS=true
+    - SMTP_AUTHENTICATION=login
+    - GITLAB_TIMEZONE=Chongqing
+    - GITLAB_HOST=127.0.0.1
+    - GITLAB_PORT=13080
+    - GITLAB_SSH_PORT=13022
+    - GITLAB_EMAIL=xxxxx@qq.com
+    - GITLAB_EMAIL_REPLY_TO=noreply@qq.com
+    - GITLAB_BACKUPS=daily
+    - GITLAB_BACKUP_TIME=01:00
+    - GITLAB_TIMEOUT=600
+    - GITLAB_SATELLITES_TIMEOUT=600
+    - GITLAB_WEBHOOK_TIMEOUT=600
+    - UNICORN_TIMEOUT=600
+  volumes:
+    - /data/docker/data/gitlab/gitlab:/home/git/data
+redis:
+  image: sameersbn/redis:latest
+  volumes:
+    - /data/docker/data/gitlab/redis:/var/lib/redis
