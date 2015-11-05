@@ -1,4 +1,6 @@
 # Term-docker-compose
+
+[![Join the chat at https://gitter.im/leozvc/term-docker-compose](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/leozvc/term-docker-compose?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 collect docker-compose for termWork!
 
 ###How to run?
