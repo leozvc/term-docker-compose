@@ -1,0 +1,8 @@
+#google镜像站
+nginxGoogle:
+    image: 'clarkzjw/nginx-google'
+    ports:
+        - "17080:80"
+#        - "17443:443"
+    restart: always
+

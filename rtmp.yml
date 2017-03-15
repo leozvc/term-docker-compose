@@ -1,0 +1,6 @@
+rtmp:
+    image: "jasonrivers/nginx-rtmp"
+    ports:
+        - "18089:8080"
+        - "1935:1935"
+    restart: always

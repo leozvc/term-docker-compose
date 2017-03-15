@@ -1,0 +1,10 @@
+mldonkey:
+  image: "zheli/32bit-mldonkey:latest"
+  ports:
+    - "16000:4000"
+    - "16080:4080"
+  volumes:
+     - /data/docker/mldonkey:/.mldonkey
+#    - /data/docker/mldonkey/shared:/.mldonkey/shared
+#    - /data/docker/mldonkey/temp:/.mldonkey/temp
+#    - /data/docker/mldonkey/incoming:/.mldonkey/incoming

@@ -1,5 +1,5 @@
 postgresql:
-  image: sameersbn/postgresql:9.4
+  image: sameersbn/postgresql:9.4-3
   environment:
     - DB_USER=gitlab
     - DB_PASS=password
@@ -7,7 +7,7 @@ postgresql:
   volumes:
     - /data/docker/gitlab/postgresql:/var/lib/postgresql
 gitlab:
-  image: sameersbn/gitlab:7.12.0
+  image: sameersbn/gitlab:8.0.2
   links:
     - redis:redisio
     - postgresql:postgresql
@@ -15,23 +15,28 @@ gitlab:
     - "13080:80"
     - "13022:22"
   environment:
+    - GITLAB_SECRETS_DB_KEY_BASE=long-and-random-alphanumeric-string
     - TZ=Asia/Chongqing
     - SMTP_ENABLED=true
-    - SMTP_DOMAIN=liaozichao@lmbang.com
-    - SMTP_HOST=smtp.exmail.qq.com
+    - SMTP_DOMAIN=xxx@qq.com
+    - SMTP_HOST=smtp.qq.com
     - SMTP_PORT=465
-    - SMTP_USER=ad_gitlab@lmbang.com
-    - SMTP_PASS=yy8654230
+    - SMTP_USER=xxx@qq.com
+    - SMTP_PASS=12222222
     - SMTP_STARTTLS=true
     - SMTP_AUTHENTICATION=login
     - GITLAB_TIMEZONE=Chongqing
-    - GITLAB_HOST=192.168.0.146
+    - GITLAB_HOST=192.168.0.80
     - GITLAB_PORT=13080
     - GITLAB_SSH_PORT=13022
-    - GITLAB_EMAIL=liaozichao@lmbang.com
-    - GITLAB_EMAIL_REPLY_TO=noreply@lmbang.com
+    - GITLAB_EMAIL=xxxxx@qq.com
+    - GITLAB_EMAIL_REPLY_TO=noreply@qq.com
     - GITLAB_BACKUPS=daily
     - GITLAB_BACKUP_TIME=01:00
+    - GITLAB_TIMEOUT=600
+    - GITLAB_SATELLITES_TIMEOUT=600
+    - GITLAB_WEBHOOK_TIMEOUT=600
+    - UNICORN_TIMEOUT=600
   volumes:
     - /data/docker/gitlab/gitlab:/home/git/data
 redis:

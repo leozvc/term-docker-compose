@@ -1,0 +1,17 @@
+#ipsec-vpn-server
+version: '2.1'
+services:
+        vpn:
+            image: 'hwdsl2/ipsec-vpn-server'
+            ports:
+                - "500:500/udp"
+                - "4500:4500/udp"
+            env_file:
+                - /data/conf/docker_vpn.env
+            volumes:
+                - /lib/modules:/lib/modules:ro
+            privileged: true
+            restart: always
+
+
+
