@@ -3,6 +3,8 @@ shadowsocks:
     image: 'tommylau/shadowsocks'
     ports:
         - "8387:8388"
+        - "23:8388"
+        - "8388:8388"
 #    volumes:
 #        - /data/conf/shadowsocks.json:/etc/shadowsocks.json
     command: 
@@ -12,3 +14,5 @@ shadowsocks:
         -m "aes-256-cfb"
 #        -c "/etc/shadowsocks.json"
     restart: always
+
+

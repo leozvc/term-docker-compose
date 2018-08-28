@@ -7,7 +7,7 @@ services:
                 - "500:500/udp"
                 - "4500:4500/udp"
             env_file:
-                - /data/conf/docker_vpn.env
+                - /data/docker-conf/vpn/docker_vpn.env
             volumes:
                 - /lib/modules:/lib/modules:ro
             privileged: true

@@ -1,0 +1,28 @@
+#shadowsocksV2
+#
+#
+#docker run -dt --name ssserver -p 6443:6443 -p 6500:6500/udp mritd/shadowsocks -m "ss-server" -s "-s 0.0.0.0 -p 6443 -m aes-256-cfb -k test123 --fast-open" -x -e "kcpserver" -k "-t 127.0.0.1:6443 -l :6500 -mode fast2"
+#
+shadowsocksv2:
+    image: 'mritd/shadowsocks'
+    ports:
+        - "8387:8388"
+        - "8388:8388"
+        - "8389:8389"
+    command: 
+        -m "ss-server"
+        -s "-s 0.0.0.0 -p 8388 -m aes-256-cfb -k 123 --fast-open"
+        -x
+        -e "kcpserver"
+        -k "-t 127.0.0.1:8388 -l :8389 -mode fast2"
+    restart: always
+
+
+
+
+#shadowsocksr
+shadowsocksr:
+    image: 'breakwa11/shadowsocksr'
+    ports:
+        - "18388:51348"
+    restart: always
